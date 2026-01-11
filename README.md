@@ -18,11 +18,14 @@
 - **定时推送** - 支持企业微信机器人自动推送
 - **零成本部署** - GitHub Actions 免费运行，无需服务器
 - **💰 白嫖 Gemini API** - Google AI Studio 提供免费额度，个人使用完全够用
+- **🔄 多模型支持** - 支持 OpenAI 兼容 API（DeepSeek、通义千问等）作为备选
 
 ### 📊 数据来源
 - **行情数据**: AkShare（免费）、Tushare、Baostock、YFinance
 - **新闻搜索**: Tavily、SerpAPI
-- **AI 分析**: Google Gemini（gemini-3-flash-preview）—— [免费获取 API Key](https://aistudio.google.com/)
+- **AI 分析**: 
+  - 主力：Google Gemini（gemini-3-flash-preview）—— [免费获取](https://aistudio.google.com/)
+  - 备选：应大家要求，也支持了OpenAI 兼容 API（DeepSeek、通义千问、Moonshot 等）
 
 ### 🛡️ 交易理念内置
 - ❌ **严禁追高** - 乖离率 > 5% 自动标记「危险」
@@ -46,12 +49,17 @@
 
 | Secret 名称 | 说明 | 必填 |
 |------------|------|:----:|
-| `GEMINI_API_KEY` | [Google AI Studio](https://aistudio.google.com/) 获取 | ✅ |
+| `GEMINI_API_KEY` | [Google AI Studio](https://aistudio.google.com/) 获取 | ✅* |
 | `WECHAT_WEBHOOK_URL` | 企业微信机器人 Webhook | ✅ |
 | `STOCK_LIST` | 自选股代码，如 `600519,300750,002594` | ✅ |
 | `TAVILY_API_KEYS` | [Tavily](https://tavily.com/) 搜索 API（新闻搜索） | 推荐 |
 | `SERPAPI_API_KEYS` | [SerpAPI](https://serpapi.com/) Key | 可选 |
 | `TUSHARE_TOKEN` | [Tushare Pro](https://tushare.pro/) Token | 可选 |
+| `OPENAI_API_KEY` | OpenAI 兼容 API Key（备选） | 可选 |
+| `OPENAI_BASE_URL` | OpenAI 兼容 API 地址 | 可选 |
+| `OPENAI_MODEL` | OpenAI 兼容模型名称 | 可选 |
+
+> *注：`GEMINI_API_KEY` 和 `OPENAI_API_KEY` 至少配置一个，系统优先使用 Gemini
 
 #### 3. 启用 Actions
 
